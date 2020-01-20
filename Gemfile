@@ -59,3 +59,4 @@ gem 'jquery-rails'
 gem "haml-rails", "~> 2.0"
 gem 'devise'
 gem 'simple_form'
+gem "paperclip", "~> 6.0.0"
