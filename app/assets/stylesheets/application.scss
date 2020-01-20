@@ -12,3 +12,127 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+a {
+  &:hover{
+    text-decoration: none;
+  }
+}
+input {
+  outline:none;
+}
+ul {
+  width:auto;
+}
+.alert {
+  color: #CD6155;
+  border-radius: 0;
+  border-left: 3px solid #E6B0AA;
+  background-color: #FDEDEC;
+  padding: .5em;
+  padding-left: 1em;
+}
+.success {
+  color: #27AE60;
+  border-radius: 0;
+  border-left: 3px solid #7DCEA0;
+  background-color: #E9F7EF;
+  padding: .5em;
+  padding-left: 1em;
+  p {
+    margin: 0;
+  }
+}
+.form {
+  #error_explanation {
+    border-bottom: 1px solid #e7e7e7;
+    margin-bottom: 1em;
+    h2 {
+      background-color:white;
+      text-align: left;
+      font-size: 1.7em;
+      padding:0;
+      color: #696969;
+    }
+    ul{
+      list-style-type: square;
+      color: #696969;
+      padding: .5em 0 .5em 1.5em;
+    }
+  }
+  p {
+    color: #777;
+  }
+  .button_to{
+    margin-top:-.5em;
+    border-bottom: 1px solid #e7e7e7;
+    padding: 0 0 .1em 0;
+    margin-bottom: .7em;
+    input[type="submit"]{
+      padding: 2px .7em 2px .7em;
+      color:#777;
+      border-radius: 5px;
+      margin: .5em 0 .7em 0;
+      &:hover {
+        color: black;
+      }
+    }
+  }
+  a {
+    padding-left: 5px;
+  }
+  border: 1px solid #e7e7e7;
+  i {
+    display:block;
+    font-size:90%;
+    font-style: normal;
+  }
+  h2 {
+    font-weight: 300;
+    margin:auto;
+    background-color: #f8f8f8;
+    padding:.5em;
+    text-align:center;
+    color: #777;
+  }
+  h3 {
+    font-weight: 300;
+  }
+  .field{
+    padding: 0 0 .5em 0;
+    label {
+      color: #777;
+      font-weight: 400;
+    }
+    em {
+      color: #777;
+      font-size: 90%;
+      font-style: normal;
+    }
+    input {
+      padding: 2px 2px 2px 5px;
+      width:70%;
+    }
+    input[type="checkbox"]{
+      width:auto;
+      cursor: pointer;
+    }
+  }
+  .actions {
+    padding: 0 0 .1em 0;
+    border-bottom: 1px solid #e7e7e7;
+    margin-bottom: .7em;
+    input[type="submit"]{
+      padding: 2px .7em 2px .7em;
+      color:#777;
+      border-radius: 5px;
+      margin: .2em 0 .7em 0;
+      &:hover {
+        color: black;
+      }
+    }
+  }
+  .form_content {
+    padding: 2em;
+  }
+}
