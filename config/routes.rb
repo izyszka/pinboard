@@ -5,5 +5,10 @@ Rails.application.routes.draw do
 
   get '/users', to: "pins#index"
 
-  resources :pins
+  resources :pins do
+    member do
+      put "like", to: "pins#like"
+      put "unlike", to: "pins#unlike"
+    end
+  end
 end

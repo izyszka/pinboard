@@ -1,5 +1,5 @@
 class PinsController < ApplicationController
-before_action :find_pin, only: [:show, :edit, :update, :destroy]
+before_action :find_pin, only: [:show, :edit, :update, :destroy, :like, :unlike]
 
   def index
     @pins = Pin.all
@@ -39,6 +39,16 @@ before_action :find_pin, only: [:show, :edit, :update, :destroy]
     else
       redirect_to pin_path(@pin), alert: "Couldn't delete pin"
     end
+  end
+
+  def like
+    @pin.liked_by current_user
+    redirect_back(fallback_location: root_path)
+  end
+
+  def unlike
+    @pin.unliked_by current_user
+    redirect_back(fallback_location: root_path)
   end
 
   private

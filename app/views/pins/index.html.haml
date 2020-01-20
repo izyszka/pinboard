@@ -3,3 +3,10 @@
     = image_tag pin.picture.url(:medium)
   =pin.title
   =pin.description
+  -if current_user && current_user.voted_up_on?(pin)
+    = link_to unlike_pin_path(pin), method: :put do
+      %p Unlike
+  -else
+    = link_to like_pin_path(pin), method: :put do
+      %p Like
+  = pin.get_likes.size
