@@ -1,5 +1,7 @@
 class PinsController < ApplicationController
 before_action :find_pin, only: [:show, :edit, :update, :destroy, :like, :unlike]
+before_action :authenticate_user!, except: [:index, :show]
+before_action :authorize, only: [:edit, :destroy]
 
   def index
     @pins = Pin.all
@@ -10,7 +12,7 @@ before_action :find_pin, only: [:show, :edit, :update, :destroy, :like, :unlike]
   end
 
   def create
-    @pin = Pin.new(pin_params)
+    @pin = current_user.pins.build(pin_params)
 
     if @pin.save
       redirect_to pin_path(@pin), notice: 'Pin added succesfully.'
@@ -59,5 +61,12 @@ before_action :find_pin, only: [:show, :edit, :update, :destroy, :like, :unlike]
 
   def find_pin
     @pin = Pin.find(params[:id])
+  end
+
+  def authorize
+    find_pin
+    unless current_user && current_user == @pin.user
+      redirect_back(fallback_location: root_path, alert: "You are not allowed to make changes to this pin.")
+    end
   end
 end

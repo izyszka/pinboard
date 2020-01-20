@@ -5,4 +5,6 @@ class Pin < ApplicationRecord
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/
 
   acts_as_votable
+
+  belongs_to :user
 end
