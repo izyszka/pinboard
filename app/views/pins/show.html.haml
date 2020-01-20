@@ -1,0 +1,15 @@
+= image_tag @pin.picture.url(:medium)
+=@pin.title
+=@pin.description
+
+-if current_user && @pin.user == current_user
+  =link_to 'Edit', edit_pin_path
+  =link_to 'Delete', pin_path, method: :delete, data: {confirm: 'Are you sure?'}
+
+-if current_user && current_user.voted_up_on?(@pin)
+  = link_to unlike_pin_path, method: :put do
+    %p Unlike
+-else
+  = link_to like_pin_path, method: :put do
+    %p Like
+= @pin.get_likes.size

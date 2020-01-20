@@ -1,0 +1,6 @@
+=simple_form_for @pin do |pin|
+  = image_tag @pin.picture.url(:medium)
+  =pin.input :title
+  =pin.input :description
+  =pin.input :picture, as: :file
+  =pin.button :submit
