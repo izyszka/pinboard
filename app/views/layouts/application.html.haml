@@ -1,0 +1,35 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Pinboard
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %nav.navbar.navbar-default
+      .container
+        .nav.navbar-nav.navbar-brand
+          =link_to 'PINBOARD', root_path
+        %ul.nav.navbar-nav.navbar-right
+          -if current_user
+            %li=link_to 'Account', edit_user_registration_path
+            %li=link_to 'Log out', destroy_user_session_path, method: :delete
+          -else
+            %li=link_to 'Sign up', new_user_registration_path
+            %li=link_to 'Sign in', new_user_session_path
+    .container
+      .row
+        .col-sm-3
+        .col-sm-6
+          .notice
+            -if notice
+              .success
+                %p=notice
+            -elsif alert
+              .alert
+                %p=alert
+        .col-sm-3
+
+      = yield
