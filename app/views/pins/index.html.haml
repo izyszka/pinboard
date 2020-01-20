@@ -1,4 +1,5 @@
 -@pins.each do |pin|
   =link_to pin do
-    =pin.title
+    = image_tag pin.picture.url(:medium)
+  =pin.title
   =pin.description

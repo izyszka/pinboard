@@ -26,8 +26,8 @@ before_action :find_pin, only: [:show, :edit, :update, :destroy]
   end
 
   def update
-    if @pin.save
-      redirect_to root_path, notice: 'Pin updated succesfully.'
+    if @pin.save && @pin.update_attribute(:picture, params[:pin][:picture])
+      redirect_to @pin, notice: 'Pin updated succesfully.'
     else
       render 'edit'
     end
@@ -35,7 +35,7 @@ before_action :find_pin, only: [:show, :edit, :update, :destroy]
 
   def destroy
     if @pin.destroy
-      redirect_to root_path, notice: 'Pin sdeleted uccesfully.'
+      redirect_to root_path, notice: 'Pin deleted uccesfully.'
     else
       redirect_to pin_path(@pin), alert: "Couldn't delete pin"
     end
@@ -44,7 +44,7 @@ before_action :find_pin, only: [:show, :edit, :update, :destroy]
   private
 
   def pin_params
-    params.require(:pin).permit(:title, :description)
+    params.require(:pin).permit(:title, :description, :picture)
   end
 
   def find_pin
