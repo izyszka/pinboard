@@ -34,7 +34,7 @@ before_action :authorize, only: [:edit, :destroy]
       end
     end
 
-    if @pin.save
+    if @pin.update(pin_params)
       redirect_to @pin, notice: 'Pin updated succesfully.'
     else
       render 'edit', alert: "Couldn't edit pin."
@@ -72,7 +72,7 @@ before_action :authorize, only: [:edit, :destroy]
   def authorize
     find_pin
     unless current_user && current_user == @pin.user
-      redirect_back(fallback_location: root_path, alert: "You are not allowed to make changes to this pin.")
+      redirect_back(fallback_location: @pin, alert: "You are not allowed to make changes to this pin.")
     end
   end
 end
