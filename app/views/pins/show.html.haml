@@ -1,15 +1,25 @@
-= image_tag @pin.picture.url(:medium)
-=@pin.title
-=@pin.description
+#pin_show.row
+  .col-sm-6.col-sm-offset-3
+    .panel.panel-default
+      .panel-heading.pin_image
+        = image_tag @pin.picture.url(:medium)
+      .panel-body
+        %h3=@pin.title
+        %p.author
+          Submitted by
+          %span=@pin.user.email
+        %p.description=@pin.description
 
--if current_user && @pin.user == current_user
-  =link_to 'Edit', edit_pin_path
-  =link_to 'Delete', pin_path, method: :delete, data: {confirm: 'Are you sure?'}
+        %button.like
+          -if current_user && current_user.voted_up_on?(@pin)
+            = link_to unlike_pin_path, method: :put do
+              %span Unlike
+          -else
+            = link_to like_pin_path, method: :put do
+              %span Like
+          %span.likes
+            =@pin.get_likes.size
 
--if current_user && current_user.voted_up_on?(@pin)
-  = link_to unlike_pin_path, method: :put do
-    %p Unlike
--else
-  = link_to like_pin_path, method: :put do
-    %p Like
-= @pin.get_likes.size
+        -if current_user && @pin.user == current_user
+          %span.edit=link_to 'Edit', edit_pin_path
+          %span.delete=link_to 'Delete', pin_path, method: :delete, data: {confirm: 'Are you sure?'}

@@ -1,6 +1,12 @@
-=simple_form_for @pin do |pin|
-  = image_tag @pin.picture.url(:medium)
-  =pin.input :title
-  =pin.input :description
-  =pin.input :picture, as: :file
-  =pin.button :submit
+#pin_show.row
+  .col-sm-6.col-sm-offset-3
+    .panel.panel-default
+      .panel-heading.pin_image
+      =simple_form_for @pin do |pin|
+        .panel-heading.pin_image
+          = image_tag @pin.picture.url(:medium)
+        .panel-body
+          =pin.input :title
+          =pin.input :description
+          =pin.input :picture, as: :file
+          =pin.button :submit
