@@ -28,10 +28,16 @@ before_action :authorize, only: [:edit, :destroy]
   end
 
   def update
-    if @pin.save && @pin.update_attribute(:picture, params[:pin][:picture])
+    if params[:pin][:picture]
+      unless @pin.update_attribute(:picture, params[:pin][:picture])
+        render 'edit', alert: "Couldn't upload a picture"
+      end
+    end
+
+    if @pin.save
       redirect_to @pin, notice: 'Pin updated succesfully.'
     else
-      render 'edit'
+      render 'edit', alert: "Couldn't edit pin."
     end
   end
 
