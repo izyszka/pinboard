@@ -13,6 +13,46 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+ #pins {
+   margin: 0 auto;
+   width: 100%;
+   text-align: center;
+   .box {
+    vertical-align: middle;
+     .panel-heading {
+       background:white;
+       border:none;
+       height: 320px;
+       vertical-align: middle;
+      display: flex;
+      align-items:center;
+     }
+    height:390px;
+    display:inline-block;
+ 	  margin: 10px;
+ 	  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
+ 	  text-align: center;
+ 	  img {
+      display: block;
+ 	  	max-width: 100%;
+ 	  }
+    h3 {
+      text-align:center;
+      font-weight: 300;
+      font-size:2em;
+      margin-top: 0;
+    }
+ 	  .user {
+ 	  	font-size: 12px;
+ 	  	border-top: 1px solid #EAEAEA;
+ 			padding: 15px;
+ 			margin: 0;
+ 	  }
+ 	}
+ }
+body {
+  background-image: url('knitting250px.png');
+}
 a {
   &:hover{
     text-decoration: none;
@@ -27,20 +67,101 @@ ul {
 .alert {
   color: #CD6155;
   border-radius: 0;
-  border-left: 3px solid #E6B0AA;
-  background-color: #FDEDEC;
+  border-left: 3px solid #CD6155;
+  background-color: white;
   padding: .5em;
   padding-left: 1em;
 }
 .success {
   color: #27AE60;
   border-radius: 0;
-  border-left: 3px solid #7DCEA0;
-  background-color: #E9F7EF;
+  border-left: 3px solid #27AE60;
+  background-color: white;
   padding: .5em;
   padding-left: 1em;
+  margin-bottom:20px;
   p {
     margin: 0;
+  }
+}
+#pin_show {
+  .like {
+    padding:0;
+    border: 1px solid #e7e7e7;
+    outline: none;
+    border-radius: 5px;
+    margin: .2em 0 .7em 0;
+    padding: 2px .7em 2px .7em;
+    a {
+      color: #777;
+      border-radius: 5px;
+      margin: .2em .5em .7em 0;
+      &:hover {
+        color: black;
+      }
+    }
+    .likes {
+      color: #777;
+      border-left: 1px solid #e7e7e7;
+      padding-left: 1em;
+      padding-right: 5px;
+    }
+  }
+  .edit {
+    display: inline-block;
+    padding: 0 1em 0 1em;
+  }
+  abbr {
+    display: none;
+  }
+  input[type="file"] {
+    margin-left: 1em;
+    display: inline-block;
+    font: 400 .9em system-ui;
+    border-radius: 5px;
+  }
+  input[type="submit"]{
+    padding: 2px .7em 2px .7em;
+    color:#777;
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+    border-image: initial;
+    background-color: buttonface;
+    margin: .5em 0 .7em 0;
+    &:hover {
+      color: black;
+    }
+  }
+  label {
+    color: #777;
+    font-weight: 400;
+  }
+  .panel-heading {
+    background: white;
+    border:none;
+    text-align: center;
+    img {
+      width:100%;
+    }
+  }
+  .panel-body {
+    padding-left: 20px;
+  }
+  h3 {
+    font-weight: 300;
+    font-size:2em;
+    margin-top: 0;
+    margin-bottom:5px;
+  }
+  .author {
+    font-size: 90%;
+
+  }
+  .description {
+    border-bottom: 1px solid #e7e7e7;
+    padding-bottom: 1em;
   }
 }
 .form {
@@ -134,5 +255,6 @@ ul {
   }
   .form_content {
     padding: 2em;
+    background: white;
   }
 }

@@ -1,13 +1,8 @@
--@pins.each do |pin|
-  =link_to pin do
-    = image_tag pin.picture.url(:medium)
-  =pin.title
-  =pin.user.email
-  =pin.description
-  -if current_user && current_user.voted_up_on?(pin)
-    = link_to unlike_pin_path(pin), method: :put do
-      %p Unlike
-  -else
-    = link_to like_pin_path(pin), method: :put do
-      %p Like
-  = pin.get_likes.size
+#pins
+  -@pins.each do |pin|
+    .box.panel.panel-default
+      .panel-heading
+        =link_to pin do
+          = image_tag pin.picture.url(:medium)
+      .panel-body
+        %h3=pin.title

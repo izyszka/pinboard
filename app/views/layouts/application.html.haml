@@ -14,12 +14,12 @@
           =link_to 'PINBOARD', root_path
         %ul.nav.navbar-nav.navbar-right
           -if current_user
-            %li=link_to 'Add pin', new_pin_path
-            %li=link_to 'Account', edit_user_registration_path
-            %li=link_to 'Log out', destroy_user_session_path, method: :delete
+            %li.pull-right=link_to 'Log out', destroy_user_session_path, method: :delete
+            %li.pull-right=link_to 'Account', edit_user_registration_path
+            %li.pull-right=link_to 'Add pin', new_pin_path
           -else
-            %li=link_to 'Sign up', new_user_registration_path
-            %li=link_to 'Sign in', new_user_session_path
+            %li.pull-right=link_to 'Sign up', new_user_registration_path
+            %li.pull-right=link_to 'Sign in', new_user_session_path
     .container
       .row
         .col-sm-3
@@ -33,4 +33,5 @@
                 %p=alert
         .col-sm-3
 
+    .container
       = yield

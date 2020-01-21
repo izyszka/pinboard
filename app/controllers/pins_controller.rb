@@ -28,10 +28,16 @@ before_action :authorize, only: [:edit, :destroy]
   end
 
   def update
-    if @pin.save && @pin.update_attribute(:picture, params[:pin][:picture])
+    if params[:pin][:picture]
+      unless @pin.update_attribute(:picture, params[:pin][:picture])
+        render 'edit', alert: "Couldn't upload a picture"
+      end
+    end
+
+    if @pin.update(pin_params)
       redirect_to @pin, notice: 'Pin updated succesfully.'
     else
-      render 'edit'
+      render 'edit', alert: "Couldn't edit pin."
     end
   end
 
@@ -66,7 +72,7 @@ before_action :authorize, only: [:edit, :destroy]
   def authorize
     find_pin
     unless current_user && current_user == @pin.user
-      redirect_back(fallback_location: root_path, alert: "You are not allowed to make changes to this pin.")
+      redirect_back(fallback_location: @pin, alert: "You are not allowed to make changes to this pin.")
     end
   end
 end
