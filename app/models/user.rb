@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   acts_as_voter
 
-  has_many :pins
+  has_many :pins, dependent: :destroy
 end
