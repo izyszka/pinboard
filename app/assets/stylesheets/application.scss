@@ -51,7 +51,7 @@
  	}
  }
 body {
-  background-image: url('knitting250px.png');
+  background-image: url(<%= asset_path 'knitting250px.png' %>);
 }
 a {
   &:hover{
