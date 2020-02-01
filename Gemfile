@@ -62,3 +62,4 @@ gem 'simple_form'
 gem "paperclip", "~> 6.0.0"
 gem 'acts_as_votable'
 gem 'rails_12factor', group: :production
+gem 'aws-sdk-s3'
